@@ -9,4 +9,31 @@
 # -- --------------------------------------------------------------------------------------------------- -- #
 """
 
-dict_test = {'key_a': 'a', 'key_b': 'b'}
+import pandas as pd
+import json
+import numpy as np
+
+pt_data = pd.read_csv('btcusdt_binance.csv', header=0)
+# pt_data.drop('index', inplace=True, axis=1)
+
+# Contar la cantidad de trades que ocurren cada hora
+pt_data.index = pd.to_datetime(pt_data['timestamp'])
+n_pt_data = pt_data['side'].resample('H').count()
+v_pt_data = pt_data['amount'].resample('H').sum()
+h_pt_data = pt_data['price'].resample('H').max()
+l_pt_data = pt_data['price'].resample('H').min()
+o_pt_data = pt_data.sort_index(ascending=True).iloc[0]['price']
+c_pt_data = pt_data.sort_index(ascending=True).iloc[-1]['price']
+
+# Seleccionar los renglones que tengan el index dentro de un rango definido de timestamps
+
+rango_ts = []
+
+# Crear un DF con los precios OHCLVV (Utilizar resample y algo tipo "fill")
+# Cada Hora
+
+
+# TradeFlow Imbalance:
+# Cada Hora
+
+# 4 momentos estadísticos oara las metricas Media, Varianza, Sesgo, Kurtosis
