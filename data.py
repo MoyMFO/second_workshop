@@ -32,6 +32,10 @@ rango_ts = []
 # Crear un DF con los precios OHCLVV (Utilizar resample y algo tipo "fill")
 # Cada Hora
 
+OHCLVV = pd.DataFrame({'Operations Volume': n_pt_data, 'Volume': v_pt_data,
+                       'High price': h_pt_data, 'Low price': l_pt_data,
+                       'Open price': o_pt_data, 'Close price': c_pt_data})
+
 
 # TradeFlow Imbalance:
 # Cada Hora
